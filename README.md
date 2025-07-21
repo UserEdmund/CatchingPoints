@@ -29,7 +29,7 @@ CatchingPoints challenges you to “grab” floating points on screen using only
     python catching_points.py
     ```
 
-##Contributing
+## Contributing
 
 If you think this is a game with great potential, or you want to tweak things a little, feel free!!! Your ideas and code can make CatchingPoints even more engaging! Whether it’s improving performance, adding new game modes, or enhancing visuals, we welcome:
 
