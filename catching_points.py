@@ -44,7 +44,7 @@ while cap.isOpened():
     h, w, c = image.shape
     lst_lms = np.zeros((0, 2), dtype=np.int32)  # Initialize as empty 2D array
 
-    # 将所有手势坐标点，加到一个列表当中 [(x1,y1),(x2,y2),....]总计21个
+    # put all the coordinates in a list(21 in total)
     if results.multi_hand_landmarks:
         for single_hand_marks in results.multi_hand_landmarks:
             for id, lm in enumerate(single_hand_marks.landmark):
@@ -52,17 +52,17 @@ while cap.isOpened():
                 cv2.circle(image, (x, y), 2, (255, 1, 0), -1)
                 lst_lms = np.append(lst_lms, [[x, y]], axis=0)  # Append [x, y] as a row
 
-        hull_index = [0, 1, 2, 3, 6, 10, 14, 18, 17]  # 取出来目标的9个点，
+        hull_index = [0, 1, 2, 3, 6, 10, 14, 18, 17]  # extract 9 points
         if len(lst_lms) > 0:  # Check if lst_lms is not empty
-            hull = cv2.convexHull(lst_lms[hull_index])  # 将九个点连成一个闭环
+            hull = cv2.convexHull(lst_lms[hull_index])  # conntect the 9 points to form the palm
 
-            cv2.polylines(image, [hull], True, (222, 222, 0), 2)  # 画出来这个闭环
+            cv2.polylines(image, [hull], True, (222, 222, 0), 2)  # draw the palm contour
 
-            up_finger = []  # 这是闭环外的列表
+            up_finger = []  # list of fingers above the palm contour
 
-            for i in [4, 8, 12, 16, 20]:  # 轮训这五个指尖点，看看哪些指尖点是在上面的闭环外
+            for i in [4, 8, 12, 16, 20]:  # check the tips of the fingers
                 point = (int(lst_lms[i][0]), int(lst_lms[i][1]))
-                dist = cv2.pointPolygonTest(hull, point, True)  # 计算点到轮廓的距离，小于0说明在轮廓外面。
+                dist = cv2.pointPolygonTest(hull, point, True)  # calculate the distance from the point ot the palm
                 print(dist)
                 if dist < 0:
                     up_finger.append(i)
@@ -92,7 +92,7 @@ while cap.isOpened():
             """
 
     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-    cv2.imshow("camera", image)  # 显示该图像
+    cv2.imshow("camera", image)  # show image
 
     if cv2.waitKey(20) & 0xFF == ord(' '):
         break
