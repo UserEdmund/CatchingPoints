@@ -1,11 +1,7 @@
 # CatchingPoints
-This is a game based on mediapipe and gesture recognition
+Welcome to CatchingPoints – a real-time, gesture-driven game powered by MediaPipe hand tracking. Join the fun, sharpen your reflexes, and help us make this project even better!
 
-There will be 5 points on the screen and you will have to "catch" the points on the screen
-
-Place your hand over the blue points on the screen so that the blue point you want to capture is in the yellow box and close all your fingers to form a fist
-
-The points will disappear as you "catch" them and if the points all disappears the game will exit and you win!!!
+CatchingPoints challenges you to “grab” floating points on screen using only your hand gestures. Five blue targets appear at random locations; guide them into your hand’s yellow capture box and close your fingers to collect. When all targets disappear, you win!
 
 ## Features
 - Real-time hand tracking using MediaPipe
@@ -32,3 +28,13 @@ The points will disappear as you "catch" them and if the points all disappears t
     ```bash
     python catching_points.py
     ```
+
+##Contributing
+
+If you think this is a game with great potential, or you want to tweak things a little, feel free!!! Your ideas and code can make CatchingPoints even more engaging! Whether it’s improving performance, adding new game modes, or enhancing visuals, we welcome:
+
+Bug reports and feature requests via GitHub Issues
+
+Pull requests with clear descriptions and examples
+
+Discussion on optimizing hand-tracking thresholds or UI
