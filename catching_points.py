@@ -22,12 +22,21 @@ hands = mp_hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_c
 mpDraw = mp.solutions.drawing_utils
 cap = cv2.VideoCapture(0)
 points2catch = np.zeros((0, 2), dtype=np.int32) #initialize the positions of the points to be catched
+ret, frame = cap.read()
+if not ret:
+    print("Failed to grab frame")
+    exit()
+h, w, c = frame.shape
+margin = 50
+
 
 numpoint = 5 #number of points
 
-for i in range(0,numpoint):
-    points2catch = np.append(points2catch, [[random.randint(50, 280), random.randint(50, 340)]], axis=0) #set point randomly
-    print(points2catch[i])
+points2catch = np.array([
+    [random.randint(margin, w - margin), 
+     random.randint(margin, h - margin)] 
+    for _ in range(numpoint)
+], dtype=np.int32)
 
 print(points2catch)
 
