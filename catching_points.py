@@ -39,7 +39,7 @@ while cap.isOpened():
     
     
     for i in range(0, int(points2catch.size/2)):
-        cv2.circle(image,points2catch[i],5,(0,245,255),-1) #draw points to catch
+        cv2.circle(image,points2catch[i],10,(80,4,204),-1) #draw points to catch
 
     h, w, c = image.shape
     lst_lms = np.zeros((0, 2), dtype=np.int32)  # Initialize as empty 2D array
